@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const RUST = "oklch(0.62 0.15 42)";
+// etichetta mono su fondo chiaro: azzurro "profondo" per contrasto leggibile
+const ACCENT = "var(--accent-strong)";
 
 // helper: mappa v dall'intervallo [a,b] a [c,d], con clamp
 const mapClamp = (v: number, a: number, b: number, c: number, d: number) => {
@@ -95,7 +96,7 @@ function ScrollStepMetrics() {
       ref={sectionRef}
       aria-label="Dati"
       className="relative w-full bg-background"
-      style={{ height: mobile ? "300vh" : "300vh" }}
+      style={{ height: mobile ? "190vh" : "300vh" }}
     >
       <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6">
         {Header}
@@ -138,7 +139,7 @@ function StaticMetrics() {
   return (
     <section aria-label="Dati" className="w-full border-t border-border bg-background px-6 py-28">
       <div className="mx-auto max-w-5xl">
-        <p className="mb-5 font-mono text-xs uppercase tracking-[0.18em]" style={{ color: RUST }}>
+        <p className="mb-5 font-mono text-xs uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
           03 — dati
         </p>
         <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl">

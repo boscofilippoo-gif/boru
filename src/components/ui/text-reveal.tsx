@@ -117,8 +117,10 @@ function TextReveal({
   return (
     <div ref={sectionRef} className="relative w-full" style={{ height: `${heightVh}vh` }}>
       <div
-        className="sticky top-0 flex w-full items-center justify-center px-6"
-        style={{ height: `${stickyVh}vh` }}
+        className="sticky flex w-full items-center justify-center px-6"
+        // banda alta stickyVh ma CENTRATA nel viewport (offset = metà dello spazio residuo)
+        // → il testo cade al 50% dell'altezza schermo, non al centro di una banda ancorata in alto
+        style={{ height: `${stickyVh}vh`, top: `${(100 - stickyVh) / 2}vh` }}
       >
         <p className={phraseClass}>
           {words.map((w, i) => {

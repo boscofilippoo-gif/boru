@@ -54,7 +54,7 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 // Cornice: 4 tacche a "L" agli angoli (stile scheda tecnica), marcate e in accento ruggine.
 // Il colore è inline per vincere sulla regola globale `* { border-color: var(--color-border) }`.
 function CornerFrame() {
-  const rust = { borderColor: "oklch(0.62 0.15 42)" };
+  const rust = { borderColor: "oklch(0.8729 0.0535 227.34)" };
   return (
     <>
       {/* alto-sinistra */}
@@ -260,7 +260,7 @@ function ScrollExpandHero() {
             className="h-12 w-px"
             style={{
               background:
-                "linear-gradient(to bottom, transparent, oklch(0.62 0.15 42))",
+                "linear-gradient(to bottom, transparent, oklch(0.8729 0.0535 227.34))",
             }}
           />
           <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
@@ -271,7 +271,7 @@ function ScrollExpandHero() {
         {/* Il pannello scuro che si espande = "il tuo processo" che si apre.
             In fase 1 è invisibile; fade-in + espansione solo in fase 2, sempre centrato. */}
         <div
-          className="relative z-10 flex items-center justify-center overflow-hidden bg-[oklch(0.18_0.008_60)]"
+          className="relative z-10 flex items-center justify-center overflow-hidden bg-[oklch(0.2038_0.0087_59.14)]"
           style={{
             width: `${panelW}px`,
             height: `${panelH}px`,
@@ -288,7 +288,7 @@ function ScrollExpandHero() {
               style={{
                 width: `${Math.max(panelW - 192, 48)}px`,
                 background:
-                  "linear-gradient(to right, transparent, oklch(0.62 0.15 42), transparent)",
+                  "linear-gradient(to right, transparent, oklch(0.8729 0.0535 227.34), transparent)",
               }}
             />
           </div>
@@ -302,21 +302,18 @@ function ScrollExpandHero() {
               pointerEvents: contentOpacity > 0.5 ? "auto" : "none",
             }}
           >
-            <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-[oklch(0.7_0.13_42)]">
-              dentro il tuo processo
-            </p>
             <h2 className="mb-8 max-w-2xl text-balance text-2xl font-semibold tracking-tight text-white md:text-4xl">
               Entriamo, capiamo, e costruiamo l'automazione — su misura.
             </h2>
 
-            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 lg:grid-cols-4">
               {STEPS.map((s) => {
                 const Icon = s.icon;
                 return (
-                  <div key={s.n} className="bg-[oklch(0.2_0.008_60)] p-5">
+                  <div key={s.n} className="bg-[oklch(0.25_0.008_59)] p-5">
                     <div className="mb-4 flex items-center justify-between">
                       <Icon
-                        className="size-5 text-[oklch(0.7_0.13_42)]"
+                        className="size-5 text-[oklch(0.8729_0.0535_227.34)]"
                         aria-hidden="true"
                       />
                       <span className="font-mono text-xs text-white/45">{s.n}</span>
@@ -335,14 +332,14 @@ function ScrollExpandHero() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[oklch(0.2_0.01_60)] transition-colors duration-200 hover:bg-[oklch(0.7_0.13_42)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[oklch(0.2_0.01_60)] transition-colors duration-200 hover:bg-[oklch(0.8729_0.0535_227.34)] hover:text-[oklch(0.2038_0.0087_59.14)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 <CalendarClock className="size-[18px]" aria-hidden="true" />
                 Prenota la call di analisi
               </a>
               <a
                 href="#essence"
-                className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-[oklch(0.7_0.13_42)] hover:text-[oklch(0.7_0.13_42)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-[oklch(0.8729_0.0535_227.34)] hover:text-[oklch(0.8729_0.0535_227.34)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 Come lavoriamo
                 <ArrowRight
@@ -410,20 +407,17 @@ function StaticHero() {
 
       {/* Il "processo" — stesso pannello scuro della versione animata, ma già aperto e fermo */}
       <section className="flex min-h-screen w-full items-center justify-center bg-background px-6 py-20">
-        <div className="flex w-full max-w-5xl flex-col justify-center rounded-2xl bg-[oklch(0.18_0.008_60)] px-6 py-12 shadow-[0_40px_120px_-40px_rgba(20,19,15,0.5)] md:px-12">
-          <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-[oklch(0.7_0.13_42)]">
-            dentro il tuo processo
-          </p>
+        <div className="flex w-full max-w-5xl flex-col justify-center rounded-2xl bg-[oklch(0.2038_0.0087_59.14)] px-6 py-12 shadow-[0_40px_120px_-40px_rgba(20,19,15,0.5)] md:px-12">
           <h2 className="mb-8 max-w-2xl text-balance text-2xl font-semibold tracking-tight text-white md:text-4xl">
             Entriamo, capiamo, e costruiamo l'automazione — su misura.
           </h2>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 lg:grid-cols-4">
             {STEPS.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.n} className="bg-[oklch(0.2_0.008_60)] p-5">
+                <div key={s.n} className="bg-[oklch(0.25_0.008_59)] p-5">
                   <div className="mb-4 flex items-center justify-between">
-                    <Icon className="size-5 text-[oklch(0.7_0.13_42)]" aria-hidden="true" />
+                    <Icon className="size-5 text-[oklch(0.8729_0.0535_227.34)]" aria-hidden="true" />
                     <span className="font-mono text-xs text-white/45">{s.n}</span>
                   </div>
                   <h3 className="mb-1.5 text-base font-semibold text-white">{s.title}</h3>
@@ -437,14 +431,14 @@ function StaticHero() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener"
-              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[oklch(0.2_0.01_60)] transition-colors duration-200 hover:bg-[oklch(0.7_0.13_42)] hover:text-white"
+              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[oklch(0.2_0.01_60)] transition-colors duration-200 hover:bg-[oklch(0.8729_0.0535_227.34)] hover:text-[oklch(0.2038_0.0087_59.14)]"
             >
               <CalendarClock className="size-[18px]" aria-hidden="true" />
               Prenota la call di analisi
             </a>
             <a
               href="#essence"
-              className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-[oklch(0.7_0.13_42)] hover:text-[oklch(0.7_0.13_42)]"
+              className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-[oklch(0.8729_0.0535_227.34)] hover:text-[oklch(0.8729_0.0535_227.34)]"
             >
               Come lavoriamo
               <ArrowRight className="size-[18px]" aria-hidden="true" />

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const RUST = "oklch(0.62 0.15 42)";
+// Sezione USP scura: tocco di accento SECONDARIO (rosa #ef95b4)
+const ACCENT_2 = "oklch(0.7703 0.1139 357.95)";
 
 const mapClamp = (v: number, a: number, b: number, c: number, d: number) => {
   if (b === a) return c;
@@ -57,10 +58,10 @@ function UspQuote() {
 
   // valori derivati (statici se reduce-motion → tutto già rivelato)
   const p = reduce ? 1 : progress;
-  // FASE 1 — IRIDE: cerchio dal centro che si espande veloce (0 → 0.25). Parte RUGGINE e vira a nero.
+  // FASE 1 — IRIDE: cerchio dal centro che si espande veloce (0 → 0.25). Parte ROSA e vira a nero.
   const veilR = mapClamp(p, 0, 0.25, 0, 75); // raggio % del clip-path circle
-  const veilMix = mapClamp(p, 0.12, 0.34, 0, 1); // 0 = ruggine, 1 = nero
-  const veilColor = `color-mix(in oklab, oklch(0.62 0.15 42) ${(1 - veilMix) * 100}%, oklch(0.18 0.008 60))`;
+  const veilMix = mapClamp(p, 0.12, 0.34, 0, 1); // 0 = rosa, 1 = nero
+  const veilColor = `color-mix(in oklab, ${ACCENT_2} ${(1 - veilMix) * 100}%, oklch(0.2038 0.0087 59.14))`;
   // FASE 2 — la card emerge dal buio (dopo che il cerchio ha coperto lo schermo)
   const sceneOp = mapClamp(p, 0.3, 0.56, 0, 1);
   const sceneY = mapClamp(p, 0.3, 0.58, 50, 0); // px
@@ -107,24 +108,24 @@ function UspQuote() {
         <div
           className="relative w-full max-w-3xl px-8 py-14 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.6)] md:px-16 md:py-20"
           style={{
-            background: "oklch(0.21 0.008 60)",
+            background: "oklch(0.25 0.008 59)",
             borderRadius: "20px",
             opacity: sceneOp,
             transform: `translateY(${sceneY}px) scale(${scale})`,
             willChange: "transform, opacity",
           }}
         >
-          {/* tacche d'angolo ruggine */}
-          <span className="absolute left-5 top-5 size-7 border-l-2 border-t-2 sm:size-9" style={{ borderColor: RUST }} />
-          <span className="absolute right-5 top-5 size-7 border-r-2 border-t-2 sm:size-9" style={{ borderColor: RUST }} />
-          <span className="absolute bottom-5 left-5 size-7 border-b-2 border-l-2 sm:size-9" style={{ borderColor: RUST }} />
-          <span className="absolute bottom-5 right-5 size-7 border-b-2 border-r-2 sm:size-9" style={{ borderColor: RUST }} />
+          {/* tacche d'angolo rosa */}
+          <span className="absolute left-5 top-5 size-7 border-l-2 border-t-2 sm:size-9" style={{ borderColor: ACCENT_2 }} />
+          <span className="absolute right-5 top-5 size-7 border-r-2 border-t-2 sm:size-9" style={{ borderColor: ACCENT_2 }} />
+          <span className="absolute bottom-5 left-5 size-7 border-b-2 border-l-2 sm:size-9" style={{ borderColor: ACCENT_2 }} />
+          <span className="absolute bottom-5 right-5 size-7 border-b-2 border-r-2 sm:size-9" style={{ borderColor: ACCENT_2 }} />
 
           {/* virgoletta */}
           <span
             aria-hidden="true"
             className="block select-none font-serif text-7xl leading-none md:text-8xl"
-            style={{ color: "oklch(0.62 0.15 42 / 0.35)" }}
+            style={{ color: "oklch(0.7703 0.1139 357.95 / 0.35)" }}
           >
             “
           </span>
@@ -140,7 +141,7 @@ function UspQuote() {
 
           {/* risposta: appare dopo */}
           <div style={{ opacity: ansOp, filter: `blur(${ansBlur}px)` }}>
-            <span className="my-8 block h-px w-12" style={{ background: RUST }} />
+            <span className="my-8 block h-px w-12" style={{ background: ACCENT_2 }} />
             <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-white/40">
               BORU studio
             </p>

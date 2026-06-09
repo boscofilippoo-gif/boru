@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const RUST = "oklch(0.62 0.15 42)";
+const ACCENT_STRONG = "var(--accent-strong)"; // azzurro profondo (etichetta + indicatore su chiaro)
+const ACCENT_2 = "var(--accent-2)"; // rosa secondario (watermark di fondo)
 
 const mapClamp = (v: number, a: number, b: number, c: number, d: number) => {
   if (b === a) return c;
@@ -100,7 +101,7 @@ function PillarsCarousel({ pillars }: PillarsCarouselProps) {
       ref={sectionRef}
       aria-label="Pilastri"
       className="relative w-full bg-background"
-      style={{ height: "300vh" }}
+      style={{ height: mobile ? "190vh" : "300vh" }}
     >
       <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6">
         {/* parola-fondale in filigrana: contesto della sezione, ferma dietro al carosello */}
@@ -109,7 +110,7 @@ function PillarsCarousel({ pillars }: PillarsCarouselProps) {
           className="pointer-events-none absolute inset-0 flex select-none items-center justify-center whitespace-nowrap font-semibold uppercase leading-none tracking-tighter"
           style={{
             fontSize: "26vw",
-            color: RUST,
+            color: ACCENT_2,
             opacity: 0.07,
             // centrata sullo STESSO punto del titolo (groupShift) → sempre dietro al titolo,
             // identico desktop/mobile, senza offset vh device-dipendenti
@@ -181,7 +182,7 @@ function PillarsCarousel({ pillars }: PillarsCarouselProps) {
             <span
               key={p.n}
               className="size-2 rounded-full transition-colors duration-300"
-              style={{ background: i === active ? RUST : "oklch(0.82 0.01 80)" }}
+              style={{ background: i === active ? ACCENT_STRONG : "oklch(0.82 0.01 80)" }}
             />
           ))}
         </div>
@@ -199,7 +200,7 @@ function PillarsStatic({ pillars }: PillarsCarouselProps) {
       className="w-full border-t border-border bg-background px-6 py-28 md:py-40"
     >
       <div className="mx-auto max-w-5xl">
-        <p className="mb-8 font-mono text-xs uppercase tracking-[0.18em]" style={{ color: RUST }}>
+        <p className="mb-8 font-mono text-xs uppercase tracking-[0.18em]" style={{ color: ACCENT_STRONG }}>
           02 — pilastri
         </p>
         <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground md:text-5xl">

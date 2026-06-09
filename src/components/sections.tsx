@@ -9,19 +9,20 @@ export { ScrollStepMetrics as Dati } from "@/components/ui/scroll-step-metrics";
 
 // TODO: sostituisci con il tuo link Calendly/Cal.com reale
 const BOOKING_URL = "https://cal.com/boru-studio";
-const RUST = "oklch(0.62 0.15 42)";
+// parola evidenziata su fondo chiaro: azzurro "profondo" per risaltare con contrasto
+const ACCENT = "var(--accent-strong)";
 
 /* ============================ ESSENCE ============================ */
 export function Essence() {
   return (
     <section id="essence" className="w-full border-t border-border bg-background">
-      {/* manifesto: la frase si riempie di colore scrollando; solo "adattamento" in ruggine */}
+      {/* manifesto: la frase si riempie di colore scrollando; solo "adattamento" in azzurro */}
       <TextReveal
-        heightVh={130}
+        heightVh={90}
         stickyVh={70}
         segments={[
           { text: "In una parola:", litColor: "var(--foreground)" },
-          { text: "adattamento", litColor: RUST },
+          { text: "adattamento", litColor: ACCENT },
         ]}
         className="flex-nowrap justify-center whitespace-nowrap text-center text-3xl font-semibold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
       />
