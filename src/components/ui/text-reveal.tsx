@@ -20,6 +20,8 @@ interface TextRevealProps {
   dimColor?: string;
   /** altezza della scena in vh (governa quanto scroll serve per accendere tutta la frase) */
   heightVh?: number;
+  /** altezza in vh sotto i 768px; se assente usa heightVh. Serve a ridurre la coda su mobile */
+  heightVhMobile?: number;
   /** altezza della banda sticky visibile in vh (più bassa = meno spazio vuoto sopra/sotto) */
   stickyVh?: number;
   className?: string;
@@ -34,11 +36,13 @@ function TextReveal({
   segments,
   dimColor = "oklch(0.74 0.008 80)",
   heightVh = 150,
+  heightVhMobile,
   stickyVh = 100,
   className,
 }: TextRevealProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [reduce, setReduce] = useState(false);
+  const [mobile, setMobile] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -48,6 +52,16 @@ function TextReveal({
     mq.addEventListener("change", u);
     return () => mq.removeEventListener("change", u);
   }, []);
+
+  useEffect(() => {
+    const u = () => setMobile(window.innerWidth < 768);
+    u();
+    window.addEventListener("resize", u);
+    return () => window.removeEventListener("resize", u);
+  }, []);
+
+  // altezza effettiva: su mobile usa heightVhMobile se fornito (coda più corta)
+  const effHeightVh = mobile && heightVhMobile != null ? heightVhMobile : heightVh;
 
   useEffect(() => {
     if (reduce) return;
@@ -115,7 +129,7 @@ function TextReveal({
   }
 
   return (
-    <div ref={sectionRef} className="relative w-full" style={{ height: `${heightVh}vh` }}>
+    <div ref={sectionRef} className="relative w-full" style={{ height: `${effHeightVh}vh` }}>
       <div
         className="sticky flex w-full items-center justify-center px-6"
         // banda alta stickyVh ma CENTRATA nel viewport (offset = metà dello spazio residuo)
@@ -124,8 +138,13 @@ function TextReveal({
       >
         <p className={phraseClass}>
           {words.map((w, i) => {
-            const start = i / N;
-            const end = start + 1.3 / N; // leggero overlap → reveal fluido
+            // rivelazione concentrata nella prima parte della corsa: tutte le parole
+            // sono accese entro REVEAL_END, poi il testo resta bloccato a frase completa
+            // fino a fine sezione (margine di "tenuta" prima dello sblocco).
+            const REVEAL_END = 0.8;
+            const span = REVEAL_END / N;
+            const start = (i / N) * REVEAL_END;
+            const end = start + span * 1.3; // leggero overlap → reveal fluido
             const lit = mapClamp(progress, start, end, 0, 1);
             return <Word key={i} word={w.word} litColor={w.litColor} lit={lit} />;
           })}

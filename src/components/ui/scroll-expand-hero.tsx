@@ -10,6 +10,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { GridPattern } from "@/components/ui/grid-pattern";
+import logoAzzurro from "@/assets/logo-azzurro.png";
 
 // TODO: sostituisci con il tuo link Calendly/Cal.com reale
 const BOOKING_URL = "https://cal.com/boru-studio";
@@ -146,7 +147,7 @@ function ScrollExpandHero() {
 
   // FASE 1 — titolo: parte centrato (+24vh), sale a 0, poi esce verso l'alto.
   const introY =
-    mapClamp(progress, 0, 0.18, vp.h * 0.24, 0) +
+    mapClamp(progress, 0, 0.18, vp.h * 0.08, 0) +
     mapClamp(progress, 0.2, 0.34, 0, -vp.h * 0.18);
   const introOpacity = mapClamp(progress, 0.2, 0.34, 1, 0);
 
@@ -210,17 +211,23 @@ function ScrollExpandHero() {
           <CornerFrame />
         </div>
 
-        {/* Intro: solo il titolo, ancorato in alto così non si sovrappone al pannello */}
+        {/* Intro: logo in alto + titolo, ancorati nella parte superiore della sezione */}
         <div
-          className="pointer-events-none absolute top-[16vh] z-20 flex max-w-5xl flex-col items-center px-6 text-center"
+          className="pointer-events-none absolute top-[7vh] z-20 flex max-w-5xl flex-col items-center px-6 text-center"
           style={{
             opacity: introOpacity,
             transform: `translateY(${introY}px)`,
             visibility: introOpacity <= 0.01 ? "hidden" : "visible",
           }}
         >
+          <img
+            src={logoAzzurro}
+            alt="BORU studio"
+            className="mb-16 w-24 select-none sm:w-28 sm:mb-20 md:w-32"
+            draggable={false}
+          />
           <h1
-            className="pointer-events-auto text-balance text-6xl font-semibold leading-[1.02] tracking-tighter text-foreground sm:text-7xl md:text-8xl"
+            className="pointer-events-auto font-title text-4xl uppercase leading-[1.1] tracking-tight text-foreground sm:text-5xl md:whitespace-nowrap md:text-5xl"
             onMouseMove={(e) => {
               const lines = e.currentTarget.querySelectorAll<HTMLElement>(".title-spotlight");
               lines.forEach((el) => {
@@ -250,7 +257,7 @@ function ScrollExpandHero() {
 
         {/* Indicatore di scroll: linea verticale ruggine + label, sotto il titolo */}
         <div
-          className="pointer-events-none absolute bottom-[14vh] z-20 flex flex-col items-center gap-3"
+          className="pointer-events-none absolute bottom-[18vh] z-20 flex flex-col items-center gap-3"
           style={{
             opacity: cueOpacity,
             visibility: cueOpacity <= 0.01 ? "hidden" : "visible",
@@ -375,7 +382,13 @@ function StaticHero() {
           )}
         />
         <div className="relative z-10 flex max-w-5xl flex-col items-center">
-          <h1 className="text-balance text-6xl font-semibold leading-[1.02] tracking-tighter text-foreground sm:text-7xl md:text-8xl">
+          <img
+            src={logoAzzurro}
+            alt="BORU studio"
+            className="mb-8 w-24 select-none sm:w-28 md:w-32"
+            draggable={false}
+          />
+          <h1 className="font-title text-4xl uppercase leading-[1.1] tracking-tight text-foreground sm:text-5xl md:whitespace-nowrap md:text-5xl">
             <span className="block">Il sistema cambia per te.</span>
             <span className="block text-muted-foreground">Non il contrario.</span>
           </h1>

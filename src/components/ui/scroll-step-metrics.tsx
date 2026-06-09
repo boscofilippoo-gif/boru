@@ -81,7 +81,7 @@ function ScrollStepMetrics() {
 
   const Header = (
     <div className="absolute top-[12vh] left-0 right-0 px-6 text-center">
-      <h2 className="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+      <h2 className="mx-auto max-w-2xl font-title text-balance text-2xl uppercase tracking-tight text-foreground md:text-4xl">
         Misuriamo prima di promettere.
       </h2>
       <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
@@ -117,7 +117,10 @@ function ScrollStepMetrics() {
                 className="pointer-events-none absolute flex flex-col items-center text-center"
                 style={{ opacity, transform: `translateY(${y}px)`, visibility: opacity <= 0.01 ? "hidden" : "visible" }}
               >
-                <span className="font-mono text-6xl font-medium tracking-tighter text-foreground md:text-9xl">
+                <span
+                  className="font-title text-7xl tracking-tight md:text-9xl"
+                  style={{ color: ACCENT }}
+                >
                   {m.value}
                 </span>
                 <span className="mt-5 max-w-[26ch] text-base text-muted-foreground md:text-lg">
@@ -142,7 +145,7 @@ function StaticMetrics() {
         <p className="mb-5 font-mono text-xs uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
           03 — dati
         </p>
-        <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+        <h2 className="max-w-2xl font-title text-balance text-2xl uppercase tracking-tight text-foreground md:text-4xl">
           Misuriamo prima di promettere.
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
@@ -152,7 +155,7 @@ function StaticMetrics() {
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {METRICS.map((m) => (
             <div key={m.value} className="bg-background p-8">
-              <span className="block font-mono text-5xl font-medium tracking-tight text-foreground">
+              <span className="block font-title text-5xl tracking-tight" style={{ color: ACCENT }}>
                 {m.value}
               </span>
               <span className="mt-4 block max-w-[22ch] text-sm leading-relaxed text-muted-foreground">

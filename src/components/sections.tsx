@@ -3,6 +3,7 @@ import { ArrowRight, CalendarClock } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { TextReveal } from "@/components/ui/text-reveal";
 import { PillarsCarousel } from "@/components/ui/pillars-carousel";
+import logoNero from "@/assets/logo-nero.png";
 
 // Sezione Dati: numeri scroll-driven uno alla volta (componente dedicato)
 export { ScrollStepMetrics as Dati } from "@/components/ui/scroll-step-metrics";
@@ -18,13 +19,14 @@ export function Essence() {
     <section id="essence" className="w-full border-t border-border bg-background">
       {/* manifesto: la frase si riempie di colore scrollando; solo "adattamento" in azzurro */}
       <TextReveal
-        heightVh={90}
-        stickyVh={70}
+        heightVh={150}
+        heightVhMobile={135}
+        stickyVh={100}
         segments={[
           { text: "In una parola:", litColor: "var(--foreground)" },
           { text: "adattamento", litColor: ACCENT },
         ]}
-        className="flex-nowrap justify-center whitespace-nowrap text-center text-3xl font-semibold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+        className="flex-nowrap justify-center whitespace-nowrap text-center font-title text-[3vw] uppercase tracking-tight md:text-4xl"
       />
     </section>
   );
@@ -71,7 +73,7 @@ export function Contatto() {
       >
         <div className="mx-auto max-w-2xl">
           <Reveal>
-            <h2 className="text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+            <h2 className="font-title text-balance text-3xl uppercase leading-[1.08] tracking-tight text-foreground md:text-5xl">
               Il primo passo è capire se possiamo aiutarti.
             </h2>
           </Reveal>
@@ -112,9 +114,7 @@ export function Contatto() {
       <footer className="w-full border-t border-border bg-background px-6 py-14">
         <div className="mx-auto flex max-w-5xl flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              BORU<span className="font-light text-muted-foreground"> studio</span>
-            </span>
+            <img src={logoNero} alt="BORU studio" className="h-14 w-auto select-none md:h-16" draggable={false} />
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               Il sistema cambia per te. Non il contrario.
             </p>
